@@ -1,4 +1,4 @@
-
+// object solution
 
 //create selectors that target the buttons
 var resetButton = document.querySelector("#reset");
