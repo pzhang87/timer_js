@@ -1,52 +1,60 @@
 // object solution
 
-//create selectors that target the buttons
-var resetButton = document.querySelector("#reset");
-var startButton = document.querySelector("#start");
-var pauseButton = document.querySelector("#pause");
+var timer = {
 
-//declare variables
+  //create selectors that target the buttons
+  resetButton: document.querySelector("#reset"),
+  startButton: document.querySelector("#start"),
+  pauseButton: document.querySelector("#pause"),
 
-displayTime = document.querySelector("h1")
-displayTime.id = "#timer"
+  //declare variables
 
-var seconds = 0;
-var timerId;
-var isRunning = false;
+  displayTime = document.querySelector("h1"),
+  //this.displayTime.id = "#timer",
 
-//create click handlers
+  seconds: 0,
+  timerId,
+  isRunning: false,
 
-var resetTimer = function() {
-  console.log("reset");
-  clearInterval(timerId);
-  seconds = 0;
-  displayTime.textContent = "Stop Watch"
-  isRunning = false;
-};
+  //create click handlers
 
-var startTimer = function() {
-  while (!isRunning) {
-  console.log("start");
-  isRunning = true;
-  timerId = setInterval(updateTime, 1000);
+  resetTimer: function() {
+    console.log("reset"),
+    clearInterval(this.timerId),
+    this.seconds = 0,
+    this.displayTime.textContent = "Stop Watch"
+    this.isRunning = false,
+  },
+
+  var startTimer = function() {
+    while (!isRunning) {
+    console.log("start");
+    this.isRunning = true;
+    this.timerId = setInterval(updateTime, 1000);
+      }
     }
+
+  var pauseTimer = function() {
+    console.log("pause");
+    clearInterval(timerId);
+    isRunning = false;
   }
 
-var pauseTimer = function() {
-  console.log("pause");
-  clearInterval(timerId);
-  isRunning = false;
+  //add event listeners on buttons
+
+  resetButton.addEventListener("click", resetTimer);
+  startButton.addEventListener("click", startTimer);
+  pauseButton.addEventListener("click", pauseTimer);
+
+  //timer update function
+
+  var updateTime = function() {
+    displayTime.textContent = seconds;
+    seconds++;
+  }
+
 }
 
-//add event listeners on buttons
-
-resetButton.addEventListener("click", resetTimer);
-startButton.addEventListener("click", startTimer);
-pauseButton.addEventListener("click", pauseTimer);
-
-//timer update function
-
-var updateTime = function() {
-  displayTime.textContent = seconds;
-  seconds++;
-}
+console.log(timer.resetButton);
+console.log(timer.startButton);
+console.log(timer.)
